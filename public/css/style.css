@@ -1,0 +1,181 @@
+/* ==========================================================================
+   Gaya kustom "Cahaya Harian".
+   Dipakai bersama Bootstrap 5 yang dimuat dari CDN di layouts/app.blade.php.
+   ========================================================================== */
+
+/* ---------- Font Arab lokal (ada di public/fonts, tanpa CDN) ---------- */
+@font-face {
+    font-family: 'Amiri';
+    src: url('../fonts/Amiri-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Amiri';
+    src: url('../fonts/Amiri-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ---------- Warna tema: hijau dan krem yang tenang ---------- */
+:root {
+    --hijau-tua: #1c5c3a;
+    --hijau: #2e7d4f;
+    --hijau-muda: #e8f3ec;
+    --krem: #faf7f0;
+    --krem-tua: #efe7d7;
+    --emas: #f3d98b;
+}
+
+body {
+    background-color: var(--krem);
+    color: #26302a;
+}
+
+/* ---------- Navbar ---------- */
+.navbar-cahaya {
+    background-color: var(--hijau-tua);
+}
+
+.navbar-cahaya .navbar-brand {
+    color: #f6f1e4;
+    letter-spacing: 0.5px;
+}
+
+.navbar-cahaya .navbar-brand:hover {
+    color: #ffffff;
+}
+
+.navbar-cahaya .nav-link.active {
+    color: var(--emas);
+    font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+.footer-cahaya {
+    background-color: var(--hijau-tua);
+    color: #e6e0cf;
+}
+
+/* ---------- Judul berwarna hijau tua ---------- */
+.judul-hijau {
+    color: var(--hijau-tua);
+}
+
+/* ---------- Tombol ---------- */
+.btn-hijau {
+    background-color: var(--hijau);
+    border-color: var(--hijau);
+    color: #ffffff;
+}
+
+.btn-hijau:hover,
+.btn-hijau:focus {
+    background-color: var(--hijau-tua);
+    border-color: var(--hijau-tua);
+    color: #ffffff;
+}
+
+.btn-outline-hijau {
+    color: var(--hijau);
+    border-color: var(--hijau);
+}
+
+.btn-outline-hijau:hover,
+.btn-outline-hijau:focus {
+    background-color: var(--hijau);
+    border-color: var(--hijau);
+    color: #ffffff;
+}
+
+/* ---------- Kartu layanan di beranda ---------- */
+.kartu-layanan {
+    border: 1px solid var(--krem-tua);
+    border-radius: 0.75rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kartu-layanan:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.5rem 1rem rgba(28, 92, 58, 0.15);
+}
+
+/* ---------- Teks Arab ----------
+   Arah RTL diatur lewat atribut dir="rtl" pada elemennya.
+   Ukuran minimal 28px sesuai panduan. */
+.teks-arab {
+    font-family: 'Amiri', 'Traditional Arabic', 'Simplified Arabic', serif;
+    font-size: 28px;
+    line-height: 2.1;
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    .teks-arab {
+        font-size: 32px;
+    }
+}
+
+/* ---------- Pemutar audio ---------- */
+.audio-ringkas {
+    width: 100%;
+    max-width: 340px;
+}
+
+/* ---------- Teks berbaris banyak (mengikuti baris baru dari API) ---------- */
+.teks-multibaris {
+    white-space: pre-line;
+}
+
+/* ---------- Widget jam langsung & jadwal sholat berikutnya ---------- */
+.jam-sholat {
+    background-color: #ffffff;
+    border: 1px solid var(--krem-tua);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+}
+
+/* Baris atas widget: lokasi di kiri, jam berjalan di kanan */
+.jam-sholat-baris {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem 0.75rem;
+}
+
+/* Tampilan di beranda: lebih ringkas dan di tengah */
+.jam-sholat-beranda {
+    width: 100%;
+    max-width: 26rem;
+    text-align: center;
+}
+
+.jam-sholat-beranda .jam-sholat-baris {
+    justify-content: center;
+}
+
+/* Tampilan di halaman jadwal sholat: kotak hijau muda */
+.jam-sholat-ringkas {
+    background-color: var(--hijau-muda);
+    border-color: #cfe6d8;
+    width: 100%;
+    max-width: 24rem;
+}
+
+/* Angka jam memakai lebar tetap agar tidak bergoyang saat berubah */
+.jam-sholat-angka {
+    font-variant-numeric: tabular-nums;
+}
+
+.jam-sholat .tautan-ganti {
+    color: var(--hijau);
+    text-decoration: none;
+}
+
+.jam-sholat .tautan-ganti:hover {
+    text-decoration: underline;
+}

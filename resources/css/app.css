@@ -1,0 +1,209 @@
+/* ==========================================================================
+   Sumber gaya "Cahaya Harian" (Tailwind CSS 4).
+   Hasil build: public/css/tailwind.css
+   Bangun ulang setelah mengubah gaya/kelas:
+     npm run build:css        (sekali jalan)
+     npm run watch:css        (pantau perubahan)
+   ========================================================================== */
+
+@import 'tailwindcss';
+
+/* Berkas yang dipindai agar kelas yang dipakai ikut dibangun. */
+@source '../../resources/views/**/*.blade.php';
+@source '../../public/js/*.js';
+
+/* ---------- Font Arab lokal (public/fonts, tanpa CDN) ---------- */
+@font-face {
+    font-family: 'Amiri';
+    src: url('/fonts/Amiri-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Amiri';
+    src: url('/fonts/Amiri-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ---------- Tema: hijau islami, krem, dan emas ---------- */
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-arab: 'Amiri', 'Traditional Arabic', 'Simplified Arabic', serif;
+
+    --color-hijau-tua: #103d2c;
+    --color-hijau: #17694a;
+    --color-hijau-lembut: #e8f2ea;
+    --color-krem: #f8f5ee;
+    --color-krem-tua: #eae3d3;
+    --color-emas: #c39a3b;
+    --color-tinta: #1f2d27;
+    --color-tinta-lembut: #5c6b62;
+}
+
+@layer components {
+    /* ---------- Wadah halaman ---------- */
+    .wadah {
+        @apply mx-auto w-full max-w-5xl px-4 sm:px-6;
+    }
+
+    /* ---------- Kartu ---------- */
+    .kartu {
+        @apply rounded-2xl border border-krem-tua bg-white shadow-sm;
+    }
+
+    .kartu-naik {
+        @apply transition duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-hijau-tua/10;
+    }
+
+    /* ---------- Judul hijau tua ---------- */
+    .judul-hijau {
+        @apply text-hijau-tua;
+    }
+
+    /* ---------- Tombol ---------- */
+    .tombol {
+        @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors duration-150 focus-visible:ring-2 focus-visible:outline-none;
+    }
+
+    .tombol-utama {
+        @apply bg-hijau text-white shadow-sm hover:bg-hijau-tua focus-visible:ring-hijau/40;
+    }
+
+    .tombol-garis {
+        @apply border border-krem-tua bg-white text-hijau-tua hover:border-hijau/40 hover:bg-hijau-lembut focus-visible:ring-hijau/30;
+    }
+
+    .tombol-kecil {
+        @apply px-3 py-1.5 text-xs;
+    }
+
+    /* ---------- Kolom isian ---------- */
+    .kolom {
+        @apply w-full rounded-xl border border-krem-tua bg-white px-3.5 py-2.5 text-sm text-tinta transition placeholder:text-tinta-lembut/50 focus:border-hijau focus:ring-2 focus:ring-hijau/15 focus:outline-none;
+    }
+
+    .label-kolom {
+        @apply mb-1 block text-xs font-semibold tracking-wide text-tinta-lembut uppercase;
+    }
+
+    .petunjuk-kolom {
+        @apply mt-1.5 text-xs text-tinta-lembut;
+    }
+
+    /* ---------- Tautan ---------- */
+    .tautan {
+        @apply font-semibold text-hijau underline-offset-2 hover:text-hijau-tua hover:underline;
+    }
+
+    /* ---------- Lencana ---------- */
+    .lencana {
+        @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+    }
+
+    .lencana-hijau {
+        @apply bg-hijau-lembut text-hijau-tua;
+    }
+
+    .lencana-emas {
+        @apply bg-amber-100 text-amber-800;
+    }
+
+    /* ---------- Kotak pesan ---------- */
+    .pesan-kotak {
+        @apply rounded-2xl border px-4 py-3 text-sm;
+    }
+
+    .pesan-info {
+        @apply border-hijau/20 bg-hijau-lembut text-hijau-tua;
+    }
+
+    .pesan-peringatan {
+        @apply border-amber-200 bg-amber-50 text-amber-900;
+    }
+
+    .pesan-galat {
+        @apply border-rose-200 bg-rose-50 text-rose-800;
+    }
+
+    /* ---------- Tabel jadwal ---------- */
+    .tabel {
+        @apply w-full border-collapse text-sm;
+    }
+
+    .tabel thead th {
+        @apply whitespace-nowrap bg-hijau-tua px-3 py-2.5 text-left text-xs font-semibold tracking-wide text-krem uppercase;
+    }
+
+    .tabel tbody td {
+        @apply border-t border-krem-tua px-3 py-2 align-middle;
+    }
+
+    .tabel tbody tr:hover {
+        @apply bg-krem/70;
+    }
+
+    .tabel .baris-hariini {
+        @apply bg-amber-50 font-semibold;
+    }
+
+    .tabel .baris-hariini:hover {
+        @apply bg-amber-50;
+    }
+
+    .tabel .sel-berikutnya {
+        @apply bg-hijau-lembut font-semibold text-hijau-tua;
+    }
+
+    /* ---------- Navigasi ---------- */
+    .tautan-nav {
+        @apply block rounded-lg px-3 py-2 text-sm font-medium text-krem/85 transition hover:bg-white/10 hover:text-white;
+    }
+
+    .tautan-nav-aktif {
+        @apply bg-white/10 text-emas;
+    }
+
+    /* ---------- Pola geometri islami (bintang delapan) ---------- */
+    .pola-islami {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.06'%3E%3Crect x='22' y='22' width='28' height='28'/%3E%3Crect x='22' y='22' width='28' height='28' transform='rotate(45 36 36)'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 72px 72px;
+    }
+
+    /* ---------- Teks Arab ---------- */
+    .teks-arab {
+        font-family: var(--font-arab);
+        font-size: 28px;
+        line-height: 2.1;
+        text-align: right;
+    }
+
+    @media (min-width: 768px) {
+        .teks-arab {
+            font-size: 32px;
+        }
+    }
+
+    /* ---------- Teks berbaris banyak (mengikuti baris baru dari API) ---------- */
+    .teks-multibaris {
+        white-space: pre-line;
+    }
+
+    /* ---------- Pemutar audio ---------- */
+    .audio-ringkas {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    /* ---------- Widget jam & jadwal sholat berikutnya ---------- */
+    .jam-sholat-beranda {
+        @apply w-full max-w-md bg-white text-center shadow-xl shadow-hijau-tua/20;
+    }
+
+    .jam-sholat-ringkas {
+        @apply w-full max-w-sm bg-hijau-lembut;
+    }
+}
