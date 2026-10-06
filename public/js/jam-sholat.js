@@ -97,12 +97,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function tampilkanPesan(teks) {
         elPesan.textContent = teks;
-        elPesan.classList.remove('d-none');
+        elPesan.classList.remove('hidden');
     }
 
     function sembunyikanPesan() {
         elPesan.textContent = '';
-        elPesan.classList.add('d-none');
+        elPesan.classList.add('hidden');
     }
 
     // Perbarui jam berjalan dan hitung mundur; dipanggil tiap detik
